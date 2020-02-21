@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../logo.svg';
+import logo from '../assets/logo_transparent.png';
 import '../App.css';
 import { channels } from '../shared/constants';
 const { ipcRenderer } = window

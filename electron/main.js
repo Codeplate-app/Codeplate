@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const { channels } = require('../src/shared/constants');
 const path = require('path');
 const url = require('url');
+
 let mainWindow;
 
 app.on('ready', () => {
@@ -14,11 +15,12 @@ app.on('ready', () => {
 		center: true,
 		minWidth: 1200,
 		minHeight: 800,
+		show: false,
+		darkTheme: true,
+		icon: path.join(__dirname, "../src/assets/logo_transparent.png"),
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
-		},
-		show: false
-		
+		}
 	});
 	mainWindow.on("ready-to-show", () => { mainWindow.show() })
 	mainWindow.loadURL(startUrl);
@@ -31,11 +33,6 @@ app.on('ready', () => {
 app.on('window-all-closed', function () {
 	if (process.platform !== 'darwin') {
 		app.quit();
-	}
-});
-app.on('activate', function () {
-	if (mainWindow === null) {
-		createWindow();
 	}
 });
 
