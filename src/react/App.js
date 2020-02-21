@@ -13,7 +13,6 @@ export default class App extends React.Component {
     };
     ipcRenderer.send(channels.APP_INFO);
     ipcRenderer.on(channels.APP_INFO, (event, arg) => {
-      ipcRenderer.removeAllListeners(channels.APP_INFO);
       const { appName, appVersion } = arg;
       this.setState({ appName, appVersion });
     });
