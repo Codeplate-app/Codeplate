@@ -17,7 +17,7 @@ app.on('ready', () => {
 		minHeight: 800,
 		show: false,
 		darkTheme: true,
-		icon: path.join(__dirname, "../src/assets/logo_transparent.png"),
+		icon: path.join(__dirname, "../src/assets/icone.ico"),
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
 		}

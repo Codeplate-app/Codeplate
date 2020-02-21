@@ -1,32 +1,24 @@
 import React from 'react';
-import logo from '../assets/logo_transparent.png';
+import logo from '../assets/logo.svg';
 import '../App.css';
-import { channels } from '../shared/constants';
-const { ipcRenderer } = window
+import {Switch, BrowserRouter as Router, Route} from "react-router-dom"
+import Home from "./Home"
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      appName: '',
-      appVersion: '',
-    };
-    ipcRenderer.send(channels.APP_INFO);
-    ipcRenderer.on(channels.APP_INFO, (event, arg) => {
-      const { appName, appVersion } = arg;
-      this.setState({ appName, appVersion });
-    });
-  }
-
-  render() {
-    const { appName, appVersion } = this.state;
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{appName} version {appVersion}</p>
-        </header>
-      </div>
-    );
-  }
-}
+	
+	render() {
+		return (
+			<Router>
+				<Home/>
+				<Switch>
+					<Route exact path="/">
+						<p>test1</p>
+					</Route>
+					<Route exact path="/other">
+						<p>test2</p>
+					</Route>
+				</Switch>
+			</Router>
+			);
+		}
+	}
