@@ -15,7 +15,8 @@ export default class App extends React.Component {
 						<p>test1</p>
 					</Route>
 					<Route exact path="/other">
-						<p>test2</p>
+						<p>other</p>
+						<Link to="/">Home</Link>
 					</Route>
 				</Switch>
 			</Router>
