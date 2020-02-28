@@ -13,10 +13,9 @@ export default class SideBar extends React.Component{
 			<div id="sidebar">
 				<Icon/>
 				<div id="links">
+					<Sections icon={listIcon} text="Boilerplates" active={true}/>
 					<Sections icon={forkIcon} text="New Project" active={true}/>
-					<Sections icon={listIcon} text="Boilerplates"/>
-					<Sections icon={settingsIcon} text="Settings"/>
-					
+					<Sections icon={settingsIcon} text="Settings" active={true}/>
 				</div>
 			</div>
 		);

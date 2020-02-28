@@ -21,7 +21,6 @@
 .active .iconSection{
    fill: var(--orange);
    stroke: var(--orange);
-   color: var(--orange);
 }
 .active .sectionTitle{
    color: var(--orange);

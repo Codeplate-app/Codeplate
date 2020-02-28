@@ -14,7 +14,8 @@ export default class Section extends React.Component{
       if(this.props.active){
          className+=" active"
       }
-      
+     
+
       return (
          <div className={className}>
             <img src={this.props.icon} alt="icon" className="iconSection"/>
