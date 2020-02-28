@@ -1,0 +1,20 @@
+@import "../../variables.css";
+
+#logoSideBar{
+   width: 160px;
+   height: 160px;
+   text-align: center;
+   margin: 0 auto;
+}
+
+#logoSvg{
+   width: 63.48px;
+   height: 91.47px;
+   margin-bottom: 30.5px;
+}
+
+#titleLogo{
+   text-align: center;
+   color: var(--text);
+   font-size: 35px;
+}

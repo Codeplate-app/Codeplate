@@ -1,0 +1,13 @@
+/* Import font product sans */
+@font-face {
+	font-family: ProductSans;
+	src: url("./assets/font/ProductSans-Regular.ttf");
+}
+
+/* Reset Style */
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: ProductSans;
+	box-sizing: border-box;
+}
