@@ -1,18 +1,12 @@
 import React from 'react';
-import '../App.css';
-import {Switch, BrowserRouter as Router, Route, Link} from "react-router-dom"
-import Home from "./Home"
+import {Switch, BrowserRouter as Router, Route} from "react-router-dom"
+import SideBar from "./SideBar"
 
 export default class App extends React.Component {
-	constructor(){
-		super()
-		window.localStorage.clear("test")
-	}
-
 	
 	render() {
 		return (
-			<Home/>
+			<Switch/>
 		);
 	}
 }

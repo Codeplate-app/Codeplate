@@ -19,7 +19,7 @@
     "start": "set BROWSER=none && react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "electron": "set ELECTRON_START_URL=http://localhost:3000 && nodemon --exec \"\"electron .\"\"",
+    "electron": "set ELECTRON_START_URL=http://localhost:3000 && nodemon --watch electron/main.js --exec \"\"electron .\"\"",
     "electron-build": "echo \"lancer la commande yarn build puis copier les dossier electron et src/shared dans build\"",
     "package": "electron-builder build --win -c.extraMetadata.main=build/electron/main.js --publish never"
   },
