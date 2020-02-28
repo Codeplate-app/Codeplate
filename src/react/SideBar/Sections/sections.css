@@ -1,0 +1,28 @@
+@import "../../variables.css";
+
+.section{
+   display: inline-block;
+   margin: 20px 0px;
+}
+
+.iconSection{
+   width: 21px;
+   height: 21px;
+   fill: var(--text);
+   stroke: var(--text);
+   margin-right: 36.3px;
+}
+
+.sectionTitle{
+   color: var(--text);
+   font-size: 26px;
+}
+
+.active .iconSection{
+   fill: var(--orange);
+   stroke: var(--orange);
+   color: var(--orange);
+}
+.active .sectionTitle{
+   color: var(--orange);
+}
