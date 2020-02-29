@@ -1,0 +1,7 @@
+@import "../../variables.css";
+
+#listeBoilerplates{
+   width: 480px;
+   height: 100vh;
+   background-color: var(--dark-light);
+}
