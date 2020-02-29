@@ -1,6 +1,6 @@
 @import "./variables.css";
 
-#test{
+#app{
    display: flex;
    flex-direction: row;
    flex-wrap: nowrap;

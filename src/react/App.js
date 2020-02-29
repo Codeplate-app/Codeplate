@@ -8,7 +8,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<Router>
-				<div id="test">
+				<div id="app">
 					<SideBar/>
 					<Switch>
 						<Route exact path="/">
