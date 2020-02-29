@@ -1,28 +1,18 @@
 import React from "react"
 import "./sections.css"
 import { Link } from "react-router-dom"
-import SVGInject from "@iconfu/svg-inject"
 
 export default class Section extends React.Component{
 
-   constructor(props){
-      super(props)
-
-      this.className = (this.props.active) ? "section active" : "section"
-      this.icon = (this.props.active) ? this.props.icon.orange : this.props.icon.black
-   }
-
-   componentWillMount(){
-      SVGInject(document.querySelector("img.iconSection"));
-   }
-
    render() {
 
+      let className = (this.props.active) ? "section active" : "section"
+      let icon = (this.props.active) ? this.props.icon.orange : this.props.icon.black
 
       return (
-         <div className={this.className}>
-            <img src={this.icon} alt="icon" className="iconSection"/>
-            <Link to={this.props.link} className="sectionTitle">{this.props.text}</Link>
+         <div className={className} onClick={this.props.clickActive} title={this.props.title}>
+            <img src={icon} alt="icon" className="iconSection" title={this.props.title}/>
+            <Link to={this.props.link} className="sectionTitle" title={this.props.title}>{this.props.title}</Link>
          </div>
       );
    }

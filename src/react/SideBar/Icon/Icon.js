@@ -1,5 +1,5 @@
 import React from "react"
-import style from "./icon.css"
+import "./icon.css"
 import logo from "../../../assets/images/logo.svg"
 
 export default class Icon extends React.Component{
