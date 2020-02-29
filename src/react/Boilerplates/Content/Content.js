@@ -7,7 +7,7 @@ export default class Content extends React.Component {
 
       return (
          <div>
-            bonjour{this.props.match.params.id}w
+            bonjour{this.props.match.params.id}
          </div>
       );
    }
