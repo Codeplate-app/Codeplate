@@ -16,6 +16,7 @@
 .sectionTitle{
    color: var(--text);
    font-size: 26px;
+   text-decoration: none;
 }
 
 .active .sectionTitle{

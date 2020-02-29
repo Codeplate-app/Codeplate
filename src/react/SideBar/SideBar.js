@@ -1,5 +1,5 @@
 import React from "react"
-import style from "./sidebar.css"
+import "./sidebar.css"
 import Icon from "./Icon/Icon"
 import Sections from "./Sections/Sections"
 
@@ -33,9 +33,9 @@ export default class SideBar extends React.Component{
 			<div id="sidebar">
 				<Icon/>
 				<div id="links">
-					<Sections icon={this.list} text="Boilerplates"/>
-					<Sections icon={this.newProject} text="New Project"/>
-					<Sections icon={this.settings} text="Settings" active={true}/>
+					<Sections icon={this.list} text="Boilerplates" link="/"/>
+					<Sections icon={this.newProject} text="New Project" link="/new-project"/>
+					<Sections icon={this.settings} text="Settings" link="/settings" active={true}/>
 				</div>
 			</div>
 		);

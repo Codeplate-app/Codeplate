@@ -1,5 +1,6 @@
 import React from "react"
-import style from "./sections.css"
+import "./sections.css"
+import { Link } from "react-router-dom"
 import SVGInject from "@iconfu/svg-inject"
 
 export default class Section extends React.Component{
@@ -21,7 +22,7 @@ export default class Section extends React.Component{
       return (
          <div className={this.className}>
             <img src={this.icon} alt="icon" className="iconSection"/>
-            <span className="sectionTitle">{this.props.text}</span>
+            <Link to={this.props.link} className="sectionTitle">{this.props.text}</Link>
          </div>
       );
    }

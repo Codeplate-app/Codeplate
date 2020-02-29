@@ -1,0 +1,7 @@
+@import "./variables.css";
+
+#test{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+}
