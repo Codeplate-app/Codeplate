@@ -18,10 +18,6 @@
    font-size: 26px;
 }
 
-.active .iconSection{
-   fill: var(--orange);
-   stroke: var(--orange);
-}
 .active .sectionTitle{
    color: var(--orange);
 }
