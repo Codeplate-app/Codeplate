@@ -1,6 +1,8 @@
 {
   "name": "codeplate",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "author": "Bidanchon Robin",
+  "repository": "https://github.com/MrAnyx/CodePlate",
   "productName": "CodePlate",
   "main": "electron/main.js",
   "homepage": "./",
@@ -21,17 +23,27 @@
     "eject": "react-scripts eject",
     "electron": "set ELECTRON_START_URL=http://localhost:3000 && nodemon --watch electron/main.js --exec \"\"electron .\"\"",
     "electron-build": "echo \"lancer la commande yarn build puis copier les dossier electron et src/shared dans build\"",
-    "package": "electron-builder build --win -c.extraMetadata.main=build/electron/main.js --publish never"
+    "package": "electron-builder build --win --x64 -c.extraMetadata.main=build/electron/main.js --publish never"
   },
   "build": {
+    "appId": "com.MrAnyx.CodePlate",
     "files": [
       "build/**/*",
       "node_modules/**/*"
     ],
-    "publish": {
-      "provider": "github",
-      "repo": "CodePlate",
-      "owner": "MrAnyx"
+    "win": {
+      "icon": "build/src/assets/images/icone.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "installerIcon": "build/src/assets/images/icone.ico",
+      "uninstallerIcon": "build/src/assets/images/icone.ico",
+      "deleteAppDataOnUninstall": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CodePlate"
     }
   },
   "eslintConfig": {
