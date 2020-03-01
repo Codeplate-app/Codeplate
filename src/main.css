@@ -4,10 +4,16 @@
 	src: url("./assets/font/ProductSans-Regular.ttf");
 }
 
+@font-face {
+	font-family: FontAwesome;
+	src: url("./assets/font/FontAwesome-Solid.otf");
+}
+
 /* Reset Style */
 *{
 	margin: 0px;
 	padding: 0px;
 	font-family: ProductSans;
 	box-sizing: border-box;
+	vertical-align: middle;
 }

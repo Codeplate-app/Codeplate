@@ -3,6 +3,7 @@ import {Switch, BrowserRouter as Router, Route, Redirect} from "react-router-dom
 import "./app.css"
 import SideBar from "./SideBar/SideBar"
 import Boilerplates from './Boilerplates/Boilerplates';
+import Settings from "./Settings/Settings"
 
 export default class App extends React.Component {
 	
@@ -20,7 +21,7 @@ export default class App extends React.Component {
 							<p>New Project</p>
 						</Route>
 						<Route exact path="/settings">
-							<p>Settings</p>
+							<Settings/>
 						</Route>
 					</Switch>
 

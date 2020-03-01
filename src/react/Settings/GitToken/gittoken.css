@@ -1,0 +1,43 @@
+@import "../../variables.css";
+
+
+#inputToken{
+   position: relative;
+}
+
+.tokenSpan{
+   color: var(--light-text);
+   font-size: 22px;
+   position: absolute;
+   top: 53%;
+   left: 20px;
+   transform: translateY(-50%);
+   pointer-events: none;
+   background-color: var(--light);
+   padding: 0px 8px;
+   transition: color .1s ease-in-out;
+   transition: top .1s ease-in-out;
+}
+
+.gittoken{
+   outline: none;
+   font-size: 22px;
+   color: var(--text);
+   border: 3px solid var(--light-text);
+   background-color: transparent;
+   border-radius: 10px;
+   width: 650px;
+   padding: 20px;
+   transition: border .1s ease-in-out;
+}
+
+.gittokenFocus{
+   border: 3px solid var(--text);
+}
+
+.tokenSpanFocus{
+   color: var(--text);
+   top: 3%;
+   transform: translateY(-50%);
+   transition: top .1s ease-in-out;
+} 

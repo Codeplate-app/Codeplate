@@ -2,4 +2,72 @@
 
 #settingsSection{
    background-color: var(--dark-light);
+   width: calc(100vw - 280px);
+   height: 100vh;
+}
+
+
+/* appearence */
+#appearence, #token{
+   width: 90%;
+   height: 260px;
+   background: var(--light);
+   margin: 50px auto;
+   border-radius: 10px;
+   box-shadow: 3px 3px 7px var(--shadow);
+   padding: 50px;
+}
+
+#palette::before{
+   font-family: "FontAwesome"; content: "\f53f";
+   font-size: 35px;
+   margin-right: 30px;
+}
+#palette{
+   font-size: 35px;
+   color: var(--text);
+}
+
+#enable{
+   font-size: 25px;
+   color: var(--text);
+}
+
+#enable span{
+   margin-right: 40px;
+}
+
+.space{
+   display: block;
+   height: 36px;
+}
+
+#accentuation{
+   color: var(--text);
+   font-size: 25px;
+}
+
+#colors{
+   width: 316px;
+   height: 38px;
+   margin-left: 32px;
+   display: inline-flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+
+/* token */
+#token{
+   height: 280px;
+}
+
+#account::before{
+   font-family: "FontAwesome"; content: "\f2bd";
+   font-size: 35px;
+   margin-right: 30px;
+}
+#account{
+   font-size: 35px;
+   color: var(--text);
 }
