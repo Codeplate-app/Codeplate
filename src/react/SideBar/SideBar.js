@@ -56,7 +56,7 @@ export default class SideBar extends React.Component{
 			<div id="sidebar">
 				<Icon/>
 				<div id="links">
-					<Sections icon={this.list} title="Boilerplates" link="/boilerplates" active={this.state.boilerplates} clickActive={this.actionClickLink.bind(this)}/>
+					<Sections icon={this.list} title="Boilerplates" link="/boilerplates/default" active={this.state.boilerplates} clickActive={this.actionClickLink.bind(this)}/>
 					<Sections icon={this.newProject} title="New Project" link="/new-project" active={this.state.newProject} clickActive={this.actionClickLink.bind(this)}/>
 					<Sections icon={this.settings} title="Settings" link="/settings" active={this.state.settings} clickActive={this.actionClickLink.bind(this)}/>
 				</div>

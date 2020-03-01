@@ -1,6 +1,6 @@
 import React from "react"
 import "./boilerplates.css"
-import {Switch, BrowserRouter as Router, Route, useParams} from "react-router-dom"
+import {Switch, BrowserRouter as Router, Route } from "react-router-dom"
 import ListeBoilerplates from "./ListeBoilerplates/ListeBoilerplates"
 import Content from "./Content/Content"
 

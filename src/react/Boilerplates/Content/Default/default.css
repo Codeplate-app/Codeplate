@@ -1,0 +1,29 @@
+@import "../../../variables.css";
+
+#defaultContent{
+   width: 655.76px;
+   height: 473.51px;
+   margin: 0 auto;
+   top: 50%;
+   transform: translateY(-50%);
+   position: relative;
+}
+
+#defaultContent img{
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   filter: opacity(25%);
+}
+
+#lost, #descriptionLost{
+   font-size: 24px;
+   color: var(--light-text);
+}
+
+#textLost{
+   width: 373px;
+   position: absolute;
+   top: 330px;
+}
+

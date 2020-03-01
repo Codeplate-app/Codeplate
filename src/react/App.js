@@ -9,7 +9,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<Router>
-				<Redirect from="/" to="/boilerplates"/>
+				<Redirect from="/" to="/boilerplates/default"/>
 				<div id="app">
 					<SideBar/>
 					<Switch>
