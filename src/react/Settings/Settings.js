@@ -10,15 +10,8 @@ const { ipcRenderer } = window;
 
 export default class Settings extends React.Component {
 
-   constructor(){
-      super()
-
-      ipcRenderer.send(channels.GITHUB_TOKEN)
-      ipcRenderer.on(channels.GITHUB_TOKEN, (_event, args) => {
-         ipcRenderer.removeAllListeners(channels.GITHUB_TOKEN);
-         this.token = args.token
-         console.log(this.token)
-      })
+   constructor(props){
+      super(props)
 
       this.state = {
          checked: false,
@@ -28,9 +21,20 @@ export default class Settings extends React.Component {
             bleu: false,
             vert: false,
             rouge: false
-         }
+         },
+         token: undefined
       }
+
+      ipcRenderer.send(channels.GITHUB_TOKEN)
+      ipcRenderer.on(channels.GITHUB_TOKEN, (_event, args) => {
+         ipcRenderer.removeAllListeners(channels.GITHUB_TOKEN);
+         this.input = <Input token={args.token} type="text" placeholder="Token"/>
+         this.setState({ token: args.token })
+
+      })
+
    }
+
 
    handleChange(){
       this.setState({
@@ -39,6 +43,7 @@ export default class Settings extends React.Component {
    }
 
    changeColor(e){
+
       this.setState({
          colors: {
             orange: false,
@@ -75,13 +80,14 @@ export default class Settings extends React.Component {
    }
 
    handleClickBtn(){
-      console.log(this.token)
+      // console.log(document.getElementById("input").value)
+      console.log(this.state.token)
    }
 
    render() {
 
-      let token = this.token
-      let type = (token === undefined || token === "") ? "save" : "delete"
+      let {token} = this.state
+      let type = (token === undefined || token === "undefined" || token === "") ? "save" : "delete"
 
       return (
          <div id="settingsSection">
@@ -108,7 +114,7 @@ export default class Settings extends React.Component {
             <div id="token">
                <span id="account">GitHub token</span>
                <div className="space"></div>
-               <Input token={token} type="password" placeholder="Token"/>
+               {this.input}
                <Button type={type} handleClick={this.handleClickBtn.bind(this)}/>
             </div>
 

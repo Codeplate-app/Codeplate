@@ -6,7 +6,7 @@ const Store = require('electron-store');
 
 const store = new Store();
 
-store.set("token", "github_token")
+store.delete("token", "token_github")
 
 let mainWindow;
 
