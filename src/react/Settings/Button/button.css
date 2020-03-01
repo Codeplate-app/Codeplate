@@ -1,0 +1,30 @@
+@import "../../variables.css";
+
+#btnToken{
+   color: var(--light);
+   font-size: 23px;
+   border-radius: 10px;
+   padding: 15px 40px;
+   border: 0px solid transparent;
+   outline: none;
+   margin-top: 20px;
+   
+   transition: box-shadow .2s ease-in-out;
+}
+
+#btnToken:hover{
+   box-shadow: 3px 3px 15px var(--shadow-btn);
+   transition: box-shadow .1s ease-in-out;
+}
+
+#btnToken:active{
+   filter: brightness(110%);
+}
+
+.delete{
+   background-color: #F23D3D;
+}
+
+.save{
+   background-color: #41CF54;
+}

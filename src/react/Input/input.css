@@ -1,11 +1,11 @@
-@import "../../variables.css";
+@import "../variables.css";
 
 
-#inputToken{
+#inputDiv{
    position: relative;
 }
 
-.tokenSpan{
+.placeholder{
    color: var(--light-text);
    font-size: 22px;
    position: absolute;
@@ -19,7 +19,7 @@
    transition: top .1s ease-in-out;
 }
 
-.gittoken{
+.classInput{
    outline: none;
    font-size: 22px;
    color: var(--text);
@@ -31,11 +31,11 @@
    transition: border .1s ease-in-out;
 }
 
-.gittokenFocus{
+.inputFocus{
    border: 3px solid var(--text);
 }
 
-.tokenSpanFocus{
+.placeholderFocus{
    color: var(--text);
    top: 3%;
    transform: translateY(-50%);

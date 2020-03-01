@@ -2,7 +2,8 @@ import React from "react"
 import "./settings.css"
 import Switch from "react-switch";
 import Color from "./Color/Color"
-import GitToken from "./GitToken/GitToken";
+import Input from "../Input/Input";
+import Button from "./Button/Button";
 
 export default class Settings extends React.Component {
 
@@ -62,7 +63,16 @@ export default class Settings extends React.Component {
       }
    }
 
+   handleClickBtn(){
+      // c'est le input du token
+      console.log(document.getElementById("input").value)
+   }
+
    render() {
+
+      let token = "bonjourtest"
+      let type = (token === "") ? "save" : "delete"
+
       return (
          <div id="settingsSection">
             <div id="appearence">
@@ -88,7 +98,8 @@ export default class Settings extends React.Component {
             <div id="token">
                <span id="account">GitHub token</span>
                <div className="space"></div>
-               <GitToken token="bonjour"/>
+               <Input token={token} type="password" placeholder="Token"/>
+               <Button type={type} handleClick={this.handleClickBtn.bind(this)}/>
             </div>
 
          </div>

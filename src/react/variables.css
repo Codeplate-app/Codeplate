@@ -5,5 +5,6 @@ html{
    --dark-light: #F2F2F2;
    --light-text: #B3B3B3;
    --shadow: #E6E6E6;
+   --shadow-btn: rgb(148, 148, 148);
 }
 
