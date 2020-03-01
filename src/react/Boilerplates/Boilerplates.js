@@ -5,8 +5,7 @@ import ListeBoilerplates from "./ListeBoilerplates/ListeBoilerplates"
 import Content from "./Content/Content"
 
 export default class Boilerplates extends React.Component {
-
-
+   
    render() {
       return (
          <Router>

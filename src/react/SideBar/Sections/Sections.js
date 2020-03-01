@@ -11,8 +11,11 @@ export default class Section extends React.Component{
 
       return (
          <div className={className} onClick={this.props.clickActive} title={this.props.title}>
-            <img src={icon} alt="icon" className="iconSection" title={this.props.title}/>
-            <Link to={this.props.link} className="sectionTitle" title={this.props.title}>{this.props.title}</Link>
+            <Link to={this.props.link} className="sectionTitle" title={this.props.title}>
+               <img src={icon} alt="icon" className="iconSection" title={this.props.title}/>
+               {this.props.title}
+            </Link>
+            
          </div>
       );
    }

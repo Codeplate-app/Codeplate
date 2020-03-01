@@ -1,0 +1,5 @@
+@import "../variables.css";
+
+#settingsSection{
+   background-color: var(--dark-light);
+}

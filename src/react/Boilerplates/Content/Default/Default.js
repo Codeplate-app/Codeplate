@@ -7,7 +7,7 @@ export default class Default extends React.Component {
    render() {
       return (
          <div id="defaultContent">
-            <img src={image} alt="image lost"/>
+            <img src={image} alt="lost ?"/>
             <div id="textLost">
                <span id="lost">You're lost ?</span>
                <br/>
