@@ -4,11 +4,22 @@ import Switch from "react-switch";
 import Color from "./Color/Color"
 import Input from "../Input/Input";
 import Button from "./Button/Button";
+import { channels } from "../../shared/constants"
+const { ipcRenderer } = window; 
+
 
 export default class Settings extends React.Component {
 
    constructor(){
       super()
+
+      ipcRenderer.send(channels.GITHUB_TOKEN)
+      ipcRenderer.on(channels.GITHUB_TOKEN, (_event, args) => {
+         ipcRenderer.removeAllListeners(channels.GITHUB_TOKEN);
+         this.token = args.token
+         console.log(this.token)
+      })
+
       this.state = {
          checked: false,
          colors: {
@@ -16,7 +27,7 @@ export default class Settings extends React.Component {
             violet: false,
             bleu: false,
             vert: false,
-            rouge: false,
+            rouge: false
          }
       }
    }
@@ -64,14 +75,13 @@ export default class Settings extends React.Component {
    }
 
    handleClickBtn(){
-      // c'est le input du token
-      console.log(document.getElementById("input").value)
+      console.log(this.token)
    }
 
    render() {
 
-      let token = "bonjourtest"
-      let type = (token === "") ? "save" : "delete"
+      let token = this.token
+      let type = (token === undefined || token === "") ? "save" : "delete"
 
       return (
          <div id="settingsSection">

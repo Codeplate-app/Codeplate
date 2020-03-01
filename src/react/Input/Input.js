@@ -4,7 +4,7 @@ import "./input.css"
 export default class Input extends React.Component {
    componentDidMount(){
 
-      if(this.props.token !== ""){
+      if(this.props.token !== "" || this.props.token === undefined){
          document.querySelector("#input").value = this.props.token
          document.querySelector(".classInput").classList.add("inputFocus")
          document.querySelector(".placeholder").classList.add("placeholderFocus")

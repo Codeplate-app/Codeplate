@@ -2,8 +2,11 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const { channels } = require('../src/shared/constants');
 const path = require('path');
 const url = require('url');
-const axios = require("axios").default
+const Store = require('electron-store');
 
+const store = new Store();
+
+store.set("token", "github_token")
 
 let mainWindow;
 
@@ -29,11 +32,18 @@ app.on('ready', () => {
 	mainWindow.on('closed', function () {
 		mainWindow = null;
 	});
-
+	
 });
 
 app.on('window-all-closed', function () {
 	if (process.platform !== 'darwin') {
 		app.quit();
 	}
+});
+
+
+ipcMain.on(channels.GITHUB_TOKEN, (event) => {
+	event.sender.send(channels.GITHUB_TOKEN, {
+		token: store.get("token")
+	});
 });
