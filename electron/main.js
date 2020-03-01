@@ -6,8 +6,6 @@ const Store = require('electron-store');
 
 const store = new Store();
 
-store.delete("token", "token_github")
-
 let mainWindow;
 
 app.on('ready', () => {
@@ -46,4 +44,14 @@ ipcMain.on(channels.GITHUB_TOKEN, (event) => {
 	event.sender.send(channels.GITHUB_TOKEN, {
 		token: store.get("token")
 	});
+});
+
+ipcMain.on(channels.NEW_TOKEN, (event, args) => {
+	store.set("token", args)
+	event.sender.send(channels.NEW_TOKEN);
+});
+
+ipcMain.on(channels.DELETE_TOKEN, (event, args) => {
+	store.delete("token")
+	event.sender.send(channels.DELETE_TOKEN);
 });

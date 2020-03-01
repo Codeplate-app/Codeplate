@@ -30,7 +30,6 @@ export default class Settings extends React.Component {
          ipcRenderer.removeAllListeners(channels.GITHUB_TOKEN);
          this.input = <Input token={args.token} type="text" placeholder="Token"/>
          this.setState({ token: args.token })
-
       })
 
    }
@@ -80,8 +79,28 @@ export default class Settings extends React.Component {
    }
 
    handleClickBtn(){
-      // console.log(document.getElementById("input").value)
-      console.log(this.state.token)
+      if(document.getElementById("btnToken").classList.contains("save")){
+
+         let new_token = document.getElementById("input").value
+         ipcRenderer.send(channels.NEW_TOKEN, new_token)
+         ipcRenderer.on(channels.NEW_TOKEN, (_event, _args) => {
+            ipcRenderer.removeAllListeners(channels.NEW_TOKEN);
+            this.setState({ token: new_token })
+         })
+      }else{
+         ipcRenderer.send(channels.DELETE_TOKEN)
+         ipcRenderer.on(channels.DELETE_TOKEN, (_event, _args) => {
+            ipcRenderer.removeAllListeners(channels.DELETE_TOKEN);
+            document.getElementById("input").value = null
+            document.querySelector(".classInput").classList.remove("inputFocus")
+            document.querySelector(".placeholder").classList.remove("placeholderFocus")
+            this.setState({ token: undefined })
+         })
+      }
+
+      
+      
+
    }
 
    render() {
