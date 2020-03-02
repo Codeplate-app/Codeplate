@@ -47,11 +47,13 @@ ipcMain.on(channels.GITHUB_TOKEN, (event) => {
 });
 
 ipcMain.on(channels.NEW_TOKEN, (event, args) => {
-	store.set("token", args)
+	if(args !== ""){
+		store.set("token", args)
+	}
 	event.sender.send(channels.NEW_TOKEN);
 });
 
-ipcMain.on(channels.DELETE_TOKEN, (event, args) => {
+ipcMain.on(channels.DELETE_TOKEN, (event, _args) => {
 	store.delete("token")
 	event.sender.send(channels.DELETE_TOKEN);
 });
