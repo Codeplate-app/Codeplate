@@ -6,6 +6,10 @@ const Store = require('electron-store');
 
 const store = new Store();
 
+if(store.get("color") === undefined){
+	store.set("color", "orange")
+}
+
 let mainWindow;
 
 app.on('ready', () => {
@@ -59,4 +63,16 @@ ipcMain.on(channels.NEW_TOKEN, (event, args) => {
 ipcMain.on(channels.DELETE_TOKEN, (event, _args) => {
 	store.delete("token")
 	event.sender.send(channels.DELETE_TOKEN);
+});
+
+ipcMain.on(channels.NEW_COLOR, (event, args) => {
+	store.set("color", args)
+	event.sender.send(channels.NEW_COLOR);
+});
+
+
+ipcMain.on(channels.GET_COLOR, (event, args) => {
+	event.sender.send(channels.GET_COLOR, {
+		color: store.get("color")
+	});
 });

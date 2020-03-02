@@ -1,8 +1,8 @@
 @import "../../../variables.css";
 
 #defaultContent{
-   width: 655.76px;
-   height: 473.51px;
+   width: 550px;
+   height: 400px;
    margin: 0 auto;
    top: 50%;
    transform: translateY(-50%);
@@ -12,18 +12,19 @@
 #defaultContent img{
    width: 100%;
    height: 100%;
-   object-fit: cover;
+   object-fit: contain;
    filter: opacity(25%);
 }
 
 #lost, #descriptionLost{
    font-size: 24px;
    color: var(--light-text);
+   opacity: .5;
 }
 
 #textLost{
-   width: 373px;
+   width: 55%;
    position: absolute;
-   top: 330px;
+   top: 60%;
 }
 

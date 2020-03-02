@@ -16,7 +16,7 @@ export default class Settings extends React.Component {
       this.state = {
          checked: false,
          colors: {
-            orange: true,
+            orange: false,
             violet: false,
             bleu: false,
             vert: false,
@@ -31,8 +31,37 @@ export default class Settings extends React.Component {
          this.input = <Input token={args.token} type="text" placeholder="Token"/>
          this.setState({ token: args.token })
       })
-
    }
+
+   componentDidMount(){
+		ipcRenderer.send(channels.GET_COLOR)
+      	ipcRenderer.on(channels.GET_COLOR, (_event, args) => {
+			ipcRenderer.removeAllListeners(channels.GET_COLOR);
+			// eslint-disable-next-line default-case
+			switch(args.color){
+				case "orange":
+            this.setState({colors: {orange: true}})
+				document.querySelector("html").style.setProperty("--orange", "#EB5925")
+				break
+				case "violet":
+            this.setState({colors: {violet: true}})
+				document.querySelector("html").style.setProperty("--orange", "#5C3FC5")
+				break
+				case "bleu":
+            this.setState({colors: {bleu: true}})
+				document.querySelector("html").style.setProperty("--orange", "#035AA6")
+				break
+				case "vert":
+            this.setState({colors: {vert: true}})
+				document.querySelector("html").style.setProperty("--orange", "#03A678")
+				break
+				case "rouge":
+            this.setState({colors: {rouge: true}})
+				document.querySelector("html").style.setProperty("--orange", "#F23D3D")
+				break
+			}
+		})
+	}
 
 
    handleChange(){
@@ -76,11 +105,15 @@ export default class Settings extends React.Component {
             document.querySelector("html").style.setProperty("--orange", "#F23D3D")
             break
       }
+      
+      ipcRenderer.send(channels.NEW_COLOR, e.target.getAttribute('color'))
+      ipcRenderer.on(channels.NEW_COLOR, (_event, _args) => {
+         ipcRenderer.removeAllListeners(channels.NEW_COLOR);
+      })
    }
 
    handleClickBtn(){
       if(document.getElementById("btnToken").classList.contains("save")){
-
          let new_token = document.getElementById("input").value
          ipcRenderer.send(channels.NEW_TOKEN, new_token)
          ipcRenderer.on(channels.NEW_TOKEN, (_event, _args) => {
