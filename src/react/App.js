@@ -10,6 +10,22 @@ const {ipcRenderer} = window
 
 export default class App extends React.Component {
 	componentDidMount(){
+
+		ipcRenderer.send(channels.GET_THEME)
+      	ipcRenderer.on(channels.GET_THEME, (_event, args) => {
+			ipcRenderer.removeAllListeners(channels.GET_THEME);
+			if(args.theme) {
+				document.querySelector("html").setAttribute("theme", "dark")
+			}else{
+				document.querySelector("html").setAttribute("theme", "light")
+			}
+			
+		})
+
+		
+
+
+
 		ipcRenderer.send(channels.GET_COLOR)
       	ipcRenderer.on(channels.GET_COLOR, (_event, args) => {
 			ipcRenderer.removeAllListeners(channels.GET_COLOR);

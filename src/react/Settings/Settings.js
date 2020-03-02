@@ -13,6 +13,12 @@ export default class Settings extends React.Component {
    constructor(props){
       super(props)
 
+      ipcRenderer.send(channels.GET_THEME)
+      ipcRenderer.on(channels.GET_THEME, (_event, args) => {
+         ipcRenderer.removeAllListeners(channels.GET_THEME);
+         this.setState({ checked: args.theme })
+      })
+
       this.state = {
          checked: false,
          colors: {
@@ -31,6 +37,8 @@ export default class Settings extends React.Component {
          this.input = <Input token={args.token} type="text" placeholder="Token"/>
          this.setState({ token: args.token })
       })
+
+      
    }
 
    componentDidMount(){
@@ -39,35 +47,49 @@ export default class Settings extends React.Component {
 			ipcRenderer.removeAllListeners(channels.GET_COLOR);
 			// eslint-disable-next-line default-case
 			switch(args.color){
-				case "orange":
-            this.setState({colors: {orange: true}})
-				document.querySelector("html").style.setProperty("--orange", "#EB5925")
-				break
-				case "violet":
-            this.setState({colors: {violet: true}})
-				document.querySelector("html").style.setProperty("--orange", "#5C3FC5")
-				break
-				case "bleu":
-            this.setState({colors: {bleu: true}})
-				document.querySelector("html").style.setProperty("--orange", "#035AA6")
-				break
-				case "vert":
-            this.setState({colors: {vert: true}})
-				document.querySelector("html").style.setProperty("--orange", "#03A678")
-				break
-				case "rouge":
-            this.setState({colors: {rouge: true}})
-				document.querySelector("html").style.setProperty("--orange", "#F23D3D")
-				break
-			}
+            case "orange":
+               this.setState({colors: {orange: true}})
+               document.querySelector("html").style.setProperty("--orange", "#EB5925")
+               break
+            case "violet":
+               this.setState({colors: {violet: true}})
+               document.querySelector("html").style.setProperty("--orange", "#5C3FC5")
+               break
+            case "bleu":
+               this.setState({colors: {bleu: true}})
+               document.querySelector("html").style.setProperty("--orange", "#035AA6")
+               break
+            case "vert":
+               this.setState({colors: {vert: true}})
+               document.querySelector("html").style.setProperty("--orange", "#03A678")
+               break
+            case "rouge":
+               this.setState({colors: {rouge: true}})
+               document.querySelector("html").style.setProperty("--orange", "#F23D3D")
+               break
+         }
 		})
 	}
 
 
    handleChange(){
-      this.setState({
-         checked: !this.state.checked
+
+      ipcRenderer.send(channels.SET_THEME)
+      ipcRenderer.on(channels.SET_THEME, (_event, args) => {
+         ipcRenderer.removeAllListeners(channels.SET_THEME);
+         this.setState({
+            checked: !this.state.checked
+         })
+
+         if(this.state.checked){
+            document.querySelector("html").setAttribute("theme", "dark")
+         }else{
+            document.querySelector("html").setAttribute("theme", "light")
+         }
+
       })
+
+      
    }
 
    changeColor(e){
@@ -113,14 +135,14 @@ export default class Settings extends React.Component {
    }
 
    handleClickBtn(){
-      if(document.getElementById("btnToken").classList.contains("save")){
+      if(document.getElementById("btnToken").classList.contains("save")) {
          let new_token = document.getElementById("input").value
          ipcRenderer.send(channels.NEW_TOKEN, new_token)
          ipcRenderer.on(channels.NEW_TOKEN, (_event, _args) => {
             ipcRenderer.removeAllListeners(channels.NEW_TOKEN);
             this.setState({ token: new_token })
          })
-      }else{
+      } else {
          ipcRenderer.send(channels.DELETE_TOKEN)
          ipcRenderer.on(channels.DELETE_TOKEN, (_event, _args) => {
             ipcRenderer.removeAllListeners(channels.DELETE_TOKEN);
@@ -130,10 +152,6 @@ export default class Settings extends React.Component {
             this.setState({ token: undefined })
          })
       }
-
-      
-      
-
    }
 
    render() {

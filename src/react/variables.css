@@ -1,4 +1,4 @@
-html{
+html[theme=light]{
    --light: #FAFAFA;
    --text: #2E2E2E;
    --orange: #EB5925;
@@ -6,5 +6,15 @@ html{
    --light-text: #B3B3B3;
    --shadow: #E6E6E6;
    --shadow-btn: rgb(148, 148, 148);
+}
+
+html[theme=dark]{
+   --light: #2E2E2E;
+   --text: #FAFAFA;
+   --orange: #EB5925;
+   --dark-light: #3D3D3D;
+   --light-text: #B3B3B3;
+   --shadow: #2E2E2E;
+   --shadow-btn: rgb(32, 32, 32);
 }
 

@@ -10,6 +10,10 @@ if(store.get("color") === undefined){
 	store.set("color", "orange")
 }
 
+if(store.get("theme") === undefined){
+	store.set("theme", "light")
+}
+
 let mainWindow;
 
 app.on('ready', () => {
@@ -74,5 +78,24 @@ ipcMain.on(channels.NEW_COLOR, (event, args) => {
 ipcMain.on(channels.GET_COLOR, (event, args) => {
 	event.sender.send(channels.GET_COLOR, {
 		color: store.get("color")
+	});
+});
+
+
+
+
+ipcMain.on(channels.SET_THEME, (event, args) => {
+	if(store.get("theme") === "light"){
+		store.set("theme", "dark")
+	} else{
+		store.set("theme", "light")
+	}
+	event.sender.send(channels.SET_THEME);
+});
+
+
+ipcMain.on(channels.GET_THEME, (event, args) => {
+	event.sender.send(channels.GET_THEME, {
+		theme: (store.get("theme") === "light") ? false : true
 	});
 });
