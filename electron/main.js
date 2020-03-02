@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, screen } = require('electron');
 const { channels } = require('../src/shared/constants');
 const path = require('path');
 const url = require('url');
@@ -14,10 +14,13 @@ app.on('ready', () => {
 		protocol: 'file:',
 		slashes: true,
 	});
+	const { width, height } = screen.getPrimaryDisplay().workAreaSize
 	mainWindow = new BrowserWindow({
 		center: true,
-		minWidth: 1750,
-		minHeight: 1035,
+		width: width,
+		height: height,
+		minWidth: width,
+		minHeight: height,
 		show: false,
 		darkTheme: true,
 		icon: path.join(__dirname, "../src/assets/images/icone.ico"),
