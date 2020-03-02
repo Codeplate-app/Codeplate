@@ -3,29 +3,11 @@ import "./sidebar.css"
 import Icon from "./Icon/Icon"
 import Sections from "./Sections/Sections"
 
-import listIcon from "../../assets/icons/fontAwesome/solid/list-ul.svg"
-import forkIcon from "../../assets/icons/fontAwesome/solid/plus-circle.svg"
-import settingsIcon from "../../assets/icons/fontAwesome/solid/cog.svg"
-import listIconOrange from "../../assets/icons/fontAwesome/solid/list-ul-orange.svg"
-import forkIconOrange from "../../assets/icons/fontAwesome/solid/plus-circle-orange.svg"
-import settingsIconOrange from "../../assets/icons/fontAwesome/solid/cog-orange.svg"
 
 export default class SideBar extends React.Component{
 
 	constructor(props){
 		super(props)
-		this.list = {
-			black: listIcon,
-			orange: listIconOrange
-		}
-		this.newProject = {
-			black: forkIcon,
-			orange: forkIconOrange
-		}
-		this.settings = {
-			black: settingsIcon,
-			orange: settingsIconOrange
-		}
 
 		this.state = {
 			boilerplates: true,
@@ -56,9 +38,9 @@ export default class SideBar extends React.Component{
 			<div id="sidebar">
 				<Icon/>
 				<div id="links">
-					<Sections icon={this.list} title="Boilerplates" link="/boilerplates/default" active={this.state.boilerplates} clickActive={this.actionClickLink.bind(this)}/>
-					<Sections icon={this.newProject} title="New Project" link="/new-project" active={this.state.newProject} clickActive={this.actionClickLink.bind(this)}/>
-					<Sections icon={this.settings} title="Settings" link="/settings" active={this.state.settings} clickActive={this.actionClickLink.bind(this)}/>
+					<Sections id="boilerplatesLink" title="Boilerplates" link="/boilerplates/default" active={this.state.boilerplates} clickActive={this.actionClickLink.bind(this)}/>
+					<Sections id="newProjectLink"title="New Project" link="/new-project" active={this.state.newProject} clickActive={this.actionClickLink.bind(this)}/>
+					<Sections id="settingsLink"title="Settings" link="/settings" active={this.state.settings} clickActive={this.actionClickLink.bind(this)}/>
 				</div>
 			</div>
 		);
