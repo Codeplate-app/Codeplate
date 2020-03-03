@@ -2,49 +2,37 @@ import React from "react"
 import "./full.css"
 import ReactLoading from "react-loading"
 
-const axios = require('axios');
-
 
 export default class Full extends React.Component{
+   
     constructor(){
         super()
         this.state = {
-           loading: true,
-           data: ""
+            loading: true
         }
+        this.forceUpdate()
         this.liste = <ReactLoading type="spinningBubbles" height={64} width={64} className="loading"/>
-        
-        
-     }
+    }
+
 
     componentDidMount(){
-        this.setState({ loading: true}, () => {
-            let self = this
-            axios.get(`https://raw.githubusercontent.com/${this.props.user}/${this.props.repo}/master/README.md`)
-                .then(function (response) {
-                    self.setState({ loading: false, data: response.data })
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-        })
+        setTimeout(() => {
+            this.setState({loading: false})
+        }, 2000)
     }
-     
+
+
 
      
      render() {
 
-  
-        let {data} = this.state
-  
         if(!this.state.loading){
-            this.liste = <pre>{data}</pre>
+            this.liste = <p>not loading</p>
         }
-  
   
         return (
            <div>
-              {this.liste}   
+               {this.liste}  
            </div>
         );
      }
