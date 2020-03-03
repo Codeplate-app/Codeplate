@@ -6,6 +6,7 @@ import Boilerplates from './Boilerplates/Boilerplates';
 import Settings from "./Settings/Settings"
 import {channels} from "../shared/constants"
 
+
 const {ipcRenderer} = window
 
 export default class App extends React.Component {
@@ -48,6 +49,11 @@ export default class App extends React.Component {
 				break
 			}
 		})
+
+
+
+
+
 	}
 	
 	render() {

@@ -4,6 +4,7 @@ const path = require('path');
 const url = require('url');
 const Store = require('electron-store');
 
+
 const store = new Store();
 
 if(store.get("color") === undefined){
