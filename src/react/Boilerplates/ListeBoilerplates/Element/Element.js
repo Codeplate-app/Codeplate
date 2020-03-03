@@ -5,11 +5,7 @@ import { Link } from "react-router-dom"
 export default class Element extends React.Component {
    render() {
 
-      
-
-     
-
-      let path = `/boilerplates/${this.props.id}`
+      let path = `/boilerplates/${this.props.user}/${this.props.repo}`
       let tags = []
       let i = 0
       this.props.tags.map(item => {
@@ -19,9 +15,6 @@ export default class Element extends React.Component {
       })
 
       return (
-
-         
-
 
          <Link to={path}>
             <div className="elementColor">

@@ -12,7 +12,7 @@ export default class Boilerplates extends React.Component {
             <div id="boilerplates">
                <ListeBoilerplates/>
                <Switch>
-                  <Route path="/boilerplates/:id" component={Content}/>
+                  <Route path="/boilerplates/:user/:repo" component={Content}/>
                </Switch>
             </div>
          </Router>
