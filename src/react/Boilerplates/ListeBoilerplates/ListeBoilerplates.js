@@ -1,6 +1,6 @@
 import React from "react"
 import "./listeboilerplates.css"
-import { Link } from "react-router-dom"
+import Element from "./Element/Element"
 
 export default class ListeBoilerplates extends React.Component {
    
@@ -8,10 +8,11 @@ export default class ListeBoilerplates extends React.Component {
       return (
          <div id="listeBoilerplates">
             <ul>
-              <li><Link to="/boilerplates/1">test 1</Link></li>
-              <li><Link to="/boilerplates/2">test 2</Link></li>
-              <li><Link to="/boilerplates/3">test 3</Link></li>
-              <li><Link to="/boilerplates/4">test 4</Link></li>
+               <li><Element id="1"/></li>
+               <li><Element id="2"/></li>
+               <li><Element id="3"/></li>
+               <li><Element id="4"/></li>
+               <li><Element id="5"/></li>
             </ul>
          </div>
       );

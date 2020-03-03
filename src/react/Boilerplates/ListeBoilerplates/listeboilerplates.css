@@ -1,7 +1,28 @@
 @import "../../variables.css";
 
+/* width */
+::-webkit-scrollbar {
+   width: 5px;
+ }
+ 
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: var(--text); 
+ }
+  
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: var(--orange);
+ }
+ 
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background: var(--orange);
+ }
+
 #listeBoilerplates{
    width: 480px;
    height: 100vh;
    background-color: var(--dark-light);
+   overflow-y: scroll;
 }
