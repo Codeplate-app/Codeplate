@@ -9,8 +9,19 @@ export default class Element extends React.Component {
 
       return (
          <Link to={path}>
-            <div className="element">
-               link
+            <div className="elementColor">
+               <div className="element">
+                  <span className="elementTitle">React Electron</span>
+                  <br/>
+                  <p className="elementDescription">Quick introduction to show you how to link electron with react</p>
+                  <div className="elementTags">
+                     <ul className="elementUlTags">
+                        <li className="elementLiTags">Javascript</li>
+                        <li className="elementLiTags">HTML</li>
+                        <li className="elementLiTags">CSS</li>
+                     </ul>
+                  </div>
+               </div>
             </div>
          </Link>
       );

@@ -5,4 +5,5 @@
    width: calc(100vw - 280px - 480px);
    background-color: var(--light);
    height: 100%;
+   color: var(--text);
 }
