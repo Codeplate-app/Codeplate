@@ -2,23 +2,37 @@ import React from "react"
 import "./full.css"
 import ReactLoading from "react-loading"
 
+const MarkdownIt = require('markdown-it')
+const axios = require("axios")
+
 
 export default class Full extends React.Component{
    
     constructor(){
         super()
         this.state = {
-            loading: true
+            data: ""
         }
-        this.forceUpdate()
-        this.liste = <ReactLoading type="spinningBubbles" height={64} width={64} className="loading"/>
+        this.md = new MarkdownIt();
+       
     }
 
-
     componentDidMount(){
-        setTimeout(() => {
-            this.setState({loading: false})
-        }, 2000)
+        axios.get(`https://raw.githubusercontent.com/${this.props.user}/${this.props.repo}/master/README.md`)
+        .then(response => {
+            this.setState({
+                data: response.data
+            }, () => console.log(response.data))
+        })
+    }
+
+    componentWillReceiveProps(nextProps){
+        axios.get(`https://raw.githubusercontent.com/${nextProps.user}/${nextProps.repo}/master/README.md`)
+        .then(response => {
+            this.setState({
+                data: response.data
+            }, () => console.log(response.data))
+        })
     }
 
 
@@ -26,13 +40,11 @@ export default class Full extends React.Component{
      
      render() {
 
-        if(!this.state.loading){
-            this.liste = <p>not loading</p>
-        }
-  
+        
+
         return (
            <div>
-               {this.liste}  
+               {this.md.render(this.state.data)}
            </div>
         );
      }
