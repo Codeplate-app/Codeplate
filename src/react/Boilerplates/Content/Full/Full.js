@@ -1,8 +1,6 @@
 import React from "react"
 import "./full.css"
-import ReactLoading from "react-loading"
-
-const MarkdownIt = require('markdown-it')
+import Markdown from 'markdown-to-jsx';
 const axios = require("axios")
 
 
@@ -13,9 +11,10 @@ export default class Full extends React.Component{
         this.state = {
             data: ""
         }
-        this.md = new MarkdownIt();
-       
+
     }
+
+    
 
     componentDidMount(){
         axios.get(`https://raw.githubusercontent.com/${this.props.user}/${this.props.repo}/master/README.md`)
@@ -39,12 +38,9 @@ export default class Full extends React.Component{
 
      
      render() {
-
-        
-
         return (
-           <div>
-               {this.md.render(this.state.data)}
+           <div id="content-full">
+               <Markdown children={this.state.data} options={{ disableParsingRawHTML: true }}/>
            </div>
         );
      }

@@ -1,1 +1,40 @@
 @import "../../../variables.css";
+
+#content-full{
+   line-height: 30px;
+   font-size: 18px;
+}
+
+#content-full pre{
+   width: 100%;
+   background-color: var(--dark-light);
+   padding: 10px;
+   border-radius: 10px;
+   margin: 20px 0px;
+   border: 1px solid var(--light-text);
+}
+
+#content-full code{
+   background-color: var(--dark-light);
+   border-radius: 10px;
+   padding: 5px 10px;
+   font-style: italic;
+}
+
+#content-full h1, #content-full h2, #content-full h3, #content-full h4, #content-full h5, #content-full h6{
+   margin-top: 50px;
+}
+
+#content-full ul, #content-full ol{
+   margin-left: 18px;
+}
+
+#content-full a{
+   color: var(--orange);
+}
+
+#content-full table{
+   margin: 50px 0px;
+}
+
+

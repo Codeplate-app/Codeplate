@@ -4,6 +4,8 @@
    /* full width - sidebar width - liste boilerplates width*/
    width: calc(100vw - 280px - 480px);
    background-color: var(--light);
-   height: 100%;
+   height: 100vh;
    color: var(--text);
+   overflow-y: scroll;
+   padding: 30px;
 }
