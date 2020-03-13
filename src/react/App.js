@@ -5,6 +5,9 @@ import SideBar from "./SideBar/SideBar"
 import Boilerplates from './Boilerplates/Boilerplates';
 import Settings from "./Settings/Settings"
 import {channels} from "../shared/constants"
+import NewProject from './NewProject/NewProject';
+import Automatic from './NewProject/Automatic/Automatic';
+import Manual from './NewProject/Manual/Manual';
 
 
 const {ipcRenderer} = window
@@ -67,7 +70,13 @@ export default class App extends React.Component {
 							<Boilerplates/>
 						</Route>
 						<Route exact path="/new-project">
-							<p>New Project</p>
+							<NewProject/>
+						</Route>
+						<Route exact path="/automatic">
+							<Automatic/>
+						</Route>
+						<Route exact path="/manual">
+							<Manual/>
 						</Route>
 						<Route exact path="/settings">
 							<Settings/>

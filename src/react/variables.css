@@ -6,6 +6,7 @@ html[theme=light]{
    --light-text: #B3B3B3;
    --shadow: #E6E6E6;
    --shadow-btn: rgb(148, 148, 148);
+   --border-select: #707070;
 }
 
 html[theme=dark]{
@@ -16,5 +17,6 @@ html[theme=dark]{
    --light-text: #B3B3B3;
    --shadow: #2E2E2E;
    --shadow-btn: rgb(32, 32, 32);
+   --border-select: #707070;
 }
 

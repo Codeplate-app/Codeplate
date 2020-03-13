@@ -1,0 +1,23 @@
+@import "../../variables.css";
+
+.selectBtn{
+   border: 2px solid var(--border-select);
+   margin: 0 auto;
+   color: var(--light-text);
+   text-align: center;
+   padding: 14px 92px 10px 92px;
+   width: 50%;
+   font-size: 22px;
+   border-radius: 10px;
+   background-color: transparent;
+   transition: all .2s ease-in-out;
+}
+
+.selectBtn:hover{
+   color: var(--light);
+   background-color: var(--border-select);
+}
+
+.selectBtn:active{
+   filter: brightness(120%);
+}
