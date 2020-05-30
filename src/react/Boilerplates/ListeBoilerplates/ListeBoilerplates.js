@@ -31,7 +31,7 @@ export default class ListeBoilerplates extends React.Component {
          }).catch(function (error) {
             console.log(error);
          }).then(data => {
-               data.map(item => {
+               data.forEach(item => {
                   axios.get(item.download_url)
                   .then(function (response) {
                      self.setState({ loading: false, data: [...self.state.data, response.data] })
@@ -52,7 +52,8 @@ export default class ListeBoilerplates extends React.Component {
       if(!this.state.loading){
          this.liste = []
          let i = 1
-         data.map(item => {
+         console.log(data)
+         data.forEach(item => {
             let user = item.projectUrl.split("/").slice(-2)[0]
             let repo = item.projectUrl.split("/").slice(-2)[1]
              

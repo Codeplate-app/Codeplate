@@ -8,18 +8,18 @@
   "homepage": "./",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/jest-dom": "^5.9.0",
+    "@testing-library/react": "^10.0.4",
+    "@testing-library/user-event": "^10.4.0",
     "axios": "^0.19.2",
     "electron-store": "^5.1.1",
-    "highlight.js": "^9.18.1",
-    "markdown-to-jsx": "^6.11.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "highlight.js": "^10.0.3",
+    "markdown-to-jsx": "^6.11.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-loading": "^2.0.3",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
     "react-switch": "^5.0.1"
   },
   "scripts": {
@@ -67,8 +67,8 @@
     ]
   },
   "devDependencies": {
-    "electron": "^8.0.1",
-    "electron-builder": "^22.3.2",
-    "nodemon": "^2.0.2"
+    "electron": "^9.0.0",
+    "electron-builder": "^22.7.0",
+    "nodemon": "^2.0.4"
   }
 }
