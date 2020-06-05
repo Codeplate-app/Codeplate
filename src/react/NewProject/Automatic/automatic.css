@@ -1,1 +1,51 @@
 @import "../../variables.css";
+
+
+#automatic-background{
+   background-color: var(--dark-light);
+   width: calc(100vw - 280px);
+   height: 100vh;
+}
+
+#new-project{
+   width: 90%;
+   /* height: 260px; */
+   background: var(--light);
+   margin: 50px auto;
+   border-radius: 10px;
+   box-shadow: 3px 3px 7px var(--shadow);
+   padding: 50px;
+}
+
+#new-icon::before{
+   font-family: "FontAwesome"; content: "\f65e";
+   font-size: 35px;
+   margin-right: 30px;
+}
+
+#new-icon{
+   font-size: 35px;
+   color: var(--text);
+}
+
+.space{
+   display: block;
+   height: 36px;
+}
+
+#repo, #languages, #description{
+   font-size: 22px;
+   width: 100%;
+}
+
+#label{
+   color: var(--text);
+   font-size: 18px;
+}
+
+#submit{
+   width: 100%;
+   color: var(--text);
+   font-size: 20px;
+   background-color: var(--dark-light);
+}

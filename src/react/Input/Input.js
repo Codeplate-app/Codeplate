@@ -5,7 +5,7 @@ export default class Input extends React.Component {
    componentDidMount(){
 
       if(this.props.token !== undefined){
-         document.querySelector("#input").value = this.props.token
+         document.querySelector(".inputDiv input").value = this.props.token
          document.querySelector(".classInput").classList.add("inputFocus")
          document.querySelector(".placeholder").classList.add("placeholderFocus")
       }
@@ -26,8 +26,8 @@ export default class Input extends React.Component {
 
    render() {
       return (
-         <div id="inputDiv">
-            <input type={this.props.type} id="input" className="classInput"/>
+         <div className="inputDiv">
+            <input type={this.props.type} className="classInput"/>
             <span className="placeholder">{this.props.placeholder}</span>
          </div>
       );

@@ -8,7 +8,7 @@ export default class Element extends React.Component {
       let path = `/boilerplates/${this.props.user}/${this.props.repo}`
       let tags = []
       let i = 0
-      this.props.tags.map(item => {
+      this.props.tags.forEach(item => {
 
          tags.push(<li key={i} className="elementLiTags">{item}</li>)
          i++
