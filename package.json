@@ -1,74 +1,103 @@
 {
-  "name": "codeplate",
-  "version": "1.0.0",
-  "author": "Bidanchon Robin",
-  "repository": "https://github.com/MrAnyx/CodePlate",
-  "productName": "CodePlate",
-  "main": "electron/main.js",
-  "homepage": "./",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.9.0",
-    "@testing-library/react": "^10.0.4",
-    "@testing-library/user-event": "^10.4.0",
-    "axios": "^0.19.2",
-    "electron-store": "^5.1.1",
-    "highlight.js": "^10.0.3",
-    "markdown-to-jsx": "^6.11.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-loading": "^2.0.3",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "react-switch": "^5.0.1"
-  },
-  "scripts": {
-    "start": "set BROWSER=none && react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "electron": "set ELECTRON_START_URL=http://localhost:3000 && nodemon --watch electron/main.js --exec \"\"electron .\"\"",
-    "electron-build": "echo \"lancer la commande yarn build puis copier les dossier electron et src/shared dans build\"",
-    "package": "electron-builder build --win --x64 -c.extraMetadata.main=build/electron/main.js --publish never"
-  },
-  "build": {
-    "appId": "com.MrAnyx.CodePlate",
-    "files": [
-      "build/**/*",
-      "node_modules/**/*"
-    ],
-    "win": {
-      "icon": "build/src/assets/images/icone.ico",
-      "target": "nsis"
-    },
-    "nsis": {
-      "allowToChangeInstallationDirectory": true,
-      "oneClick": false,
-      "installerIcon": "build/src/assets/images/icone.ico",
-      "uninstallerIcon": "build/src/assets/images/icone.ico",
-      "deleteAppDataOnUninstall": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "shortcutName": "CodePlate"
-    }
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "electron": "^9.0.0",
-    "electron-builder": "^22.7.0",
-    "nodemon": "^2.0.4"
-  }
+   "name": "electron-vite",
+   "version": "0.0.0",
+   "author": "MrAnyx",
+   "contributors": [
+      {
+         "name": "Robin B",
+         "email": "test@mail.com"
+      }
+   ],
+   "main": "electron/main.ts",
+   "scripts": {
+      "dev": "vite",
+      "build": "vue-tsc --noEmit && vite build",
+      "serve": "vite preview",
+      "electron": "wait-on tcp:3000 && cross-env IS_DEV=true nodemon --watch electron/main.ts --exec \"electron .\"",
+      "electron:pack": "electron-builder --dir",
+      "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"npm run electron\"",
+      "electron:builder": "electron-builder -wl",
+      "build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
+      "app:build": "npm run build:for:electron && npm run electron:builder",
+      "app:pack": "npm run build:for:electron && electron-packager . build/packager/electron-vite --all --asar --ignore=.gitignore"
+   },
+   "dependencies": {
+      "@vicons/tabler": "^0.11.0",
+      "@vitejs/plugin-vue": "^1.4.0",
+      "dotenv": "^10.0.0",
+      "naive-ui": "^2.16.5",
+      "vfonts": "^0.1.0",
+      "vite": "^2.5.0",
+      "vue": "^3.0.5"
+   },
+   "devDependencies": {
+      "@typescript-eslint/eslint-plugin": "^4.29.2",
+      "@typescript-eslint/parser": "^4.29.2",
+      "@vue/compiler-sfc": "^3.0.5",
+      "concurrently": "^6.2.1",
+      "cross-env": "^7.0.3",
+      "electron": "^13.2.1",
+      "electron-builder": "^22.11.7",
+      "electron-packager": "^15.3.0",
+      "eslint": "^7.32.0",
+      "eslint-config-airbnb-base": "^14.2.1",
+      "eslint-config-prettier": "^8.3.0",
+      "eslint-import-resolver-typescript": "^2.4.0",
+      "eslint-plugin-import": "^2.24.0",
+      "eslint-plugin-prettier": "^3.4.0",
+      "eslint-plugin-vue": "^7.16.0",
+      "nodemon": "^2.0.12",
+      "prettier": "^2.3.2",
+      "typescript": "^4.3.2",
+      "vue-tsc": "^0.2.2",
+      "wait-on": "^6.0.0"
+   },
+   "build": {
+      "productName": "Electron vite",
+      "copyright": "Copyright © 2021 ${author}",
+      "appId": "electron-vite",
+      "artifactName": "${productName}_Installer_${version}_${os}_${arch}.${ext}",
+      "extraResources": "pluginsDist",
+      "asar": true,
+      "icon": "public/icon.png",
+      "dmg": {
+         "contents": [
+            {
+               "x": 240,
+               "y": 150,
+               "type": "link",
+               "path": "/Applications"
+            }
+         ]
+      },
+      "linux": {
+         "icon": "assets/building/linux",
+         "category": "Development",
+         "maintainer": "test@mail.com",
+         "target": [
+            "AppImage",
+            "deb"
+         ]
+      },
+      "win": {
+         "icon": "public/icon.ico",
+         "target": [
+            {
+               "target": "nsis"
+            }
+         ]
+      },
+      "nsis": {
+         "oneClick": false,
+         "allowToChangeInstallationDirectory": true
+      },
+      "files": [
+         "dist/**/*",
+         "electron/**/*"
+      ],
+      "directories": {
+         "buildResources": "assets",
+         "output": "build/builder"
+      }
+   }
 }
