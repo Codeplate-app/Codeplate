@@ -15,5 +15,6 @@
    "editor.codeActionsOnSave": {
       "source.fixAll": true
    },
-   "files.eol": "\n"
+   "files.eol": "\n",
+   "prettier.printWidth": 999999
 }
