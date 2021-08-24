@@ -1,24 +1,14 @@
 import { createApp } from "vue";
-import { createRouter, createWebHistory } from "vue-router";
+import { createPinia } from "pinia";
 import App from "./App.vue";
-
-import Content from "@/components/Content.vue";
-import Empty from "@/components/Empty.vue";
+import router from "@/plugin/router";
 
 import "@/assets/photonkit/dist/css/photon.min.css";
 
-const routes = [
-   { path: "/", component: Empty },
-   { path: "/project/:user/:repository", component: Content },
-];
-
-const router = createRouter({
-   history: createWebHistory(),
-   routes,
-});
-
 const app = createApp(App);
+const pinia = createPinia();
 
+app.use(pinia);
 app.use(router);
 
 app.mount("#app");

@@ -4,7 +4,6 @@ import { resolve } from "path";
 
 const pathResolve = (dir: string) => resolve(__dirname, ".", dir);
 
-// https://vitejs.dev/config/
 /**
  * @type {import('vite').UserConfig}
  */
@@ -14,6 +13,8 @@ export default defineConfig({
    resolve: {
       alias: {
          "@": pathResolve("src"),
+         "~": pathResolve("node_modules"),
+         
       },
    },
 });
