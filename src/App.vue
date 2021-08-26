@@ -12,19 +12,18 @@
 </template>
 
 <script lang="ts">
-import Sidebar from "./components/Sidebar.vue";
-import useStore from "@/plugin/store";
 import axios from "axios";
 import { defineComponent } from "vue";
-import { GithubFileType, AppType } from "./Types/ObjectTypes";
+import Sidebar from "./components/Sidebar.vue";
+import useStore from "@/plugin/store";
+import { GithubFileType } from "./Types/ObjectTypes";
 
 export default defineComponent({
    name: "App",
    components: {
-      Sidebar
+      Sidebar,
    },
    setup() {
-      
       const store = useStore();
 
       // Get all app files
@@ -36,7 +35,7 @@ export default defineComponent({
                axios
                   .get(file.download_url)
                   .then(({ data }) => {
-                     store.addApp(data)
+                     store.addApp(data);
                   })
                   .catch((err) => {
                      console.error(err);
@@ -46,7 +45,6 @@ export default defineComponent({
          .catch((err) => {
             console.error(err);
          });
-   }
-})
-
+   },
+});
 </script>

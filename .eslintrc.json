@@ -4,7 +4,7 @@
         "es2021": true
     },
     "extends": [
-        "plugin:vue/essential",
+        "plugin:vue/vue3-recommended",
         "airbnb-base",
         "prettier"
     ],
@@ -22,12 +22,14 @@
     "rules": {
         "prettier/prettier": "error",
         "import/no-unresolved": "error",
+        "no-unused-vars": "warn",
+        "no-case-declarations": "off",
         "import/extensions": [
             "error",
             "ignorePackages",
             {
               "js": "never",
-              "ts": "never",
+              "ts": "never"
             }
          ]
     },

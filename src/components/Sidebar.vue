@@ -5,7 +5,7 @@
             <input class="form-control" type="text" placeholder="Search for something" />
          </li>
 
-         <router-link :to="`/project/${app.id}`" class="sidebar-link" v-for="(app, key) in store.apps" :key="key">
+         <router-link v-for="(app, key) in store.apps" :key="key" :to="`/project/${app.id}`" class="sidebar-link">
             <li class="list-group-item sidebar-link-content">
                <div class="media-body">
                   <strong>{{ app.title }}</strong>
@@ -21,9 +21,8 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
-import useStore from "@/plugin/store";
 import { defineComponent } from "vue";
+import useStore from "@/plugin/store";
 
 export default defineComponent({
    name: "SideBar",
@@ -32,11 +31,10 @@ export default defineComponent({
       const store = useStore();
 
       return {
-         store
-      }
-   }
-})
-
+         store,
+      };
+   },
+});
 </script>
 
 <style lang="scss" scoped>
