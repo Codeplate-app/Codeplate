@@ -1,9 +1,21 @@
+/* eslint-disable camelcase */
 type AppType = {
-   id: string;
    title: string;
    description: string;
    projectUrl: string;
-   readme: string;
+   readme?: string;
+   languages: Array<string>;
+   downloadable: Boolean;
+};
+
+type StoreAppType = {
+   id?: string;
+   user?: string;
+   repo?: string;
+   title: string;
+   description: string;
+   projectUrl: string;
+   readme?: string;
    languages: Array<string>;
    downloadable: Boolean;
 };
@@ -12,7 +24,7 @@ type GithubFileType = {
    name: string;
    path: string;
    sha: string;
-   size: BigInteger;
+   size: number;
    url: string;
    html_url: string;
    git_url: string;
@@ -30,4 +42,9 @@ type ReadmeType = {
    content: string;
 };
 
-export { AppType, GithubFileType, ReadmeType };
+type StoreAppId = {
+   user: string;
+   repo: string;
+};
+
+export { AppType, GithubFileType, ReadmeType, StoreAppType, StoreAppId };

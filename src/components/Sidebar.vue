@@ -2,10 +2,10 @@
    <div class="pane pane-md sidebar">
       <ul class="list-group">
          <li class="list-group-header">
-            <input class="form-control" type="text" placeholder="Search for something" />
+            <input v-model="search" class="form-control" type="text" placeholder="Search for something" @keypress="updateSearch" />
          </li>
 
-         <router-link v-for="(app, key) in store.apps" :key="key" :to="`/project/${app.id}`" class="sidebar-link">
+         <router-link v-for="app in apps" :key="app.id" :to="{ name: 'app_boilerplate', params: { user: app.user, repo: app.repo } }" class="sidebar-link">
             <li class="list-group-item sidebar-link-content">
                <div class="media-body">
                   <strong>{{ app.title }}</strong>
@@ -21,17 +21,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import useStore from "@/plugin/store";
+import { StoreAppType } from "@/Types/ObjectTypes";
 
 export default defineComponent({
    name: "SideBar",
    components: {},
    setup() {
       const store = useStore();
+      const search = ref("");
+
+      let { apps } = store;
+
+      const updateSearch = () => {
+         if (search.value === "") {
+            apps = store.apps;
+         }
+         apps = apps.filter((app: StoreAppType) => app.title.includes(search.value));
+      };
 
       return {
-         store,
+         apps,
+         search,
+         updateSearch,
       };
    },
 });

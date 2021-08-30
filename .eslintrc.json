@@ -24,6 +24,8 @@
         "import/no-unresolved": "error",
         "no-unused-vars": "warn",
         "no-case-declarations": "off",
+        "prefer-destructuring": "off",
+        "no-console": "off",
         "import/extensions": [
             "error",
             "ignorePackages",

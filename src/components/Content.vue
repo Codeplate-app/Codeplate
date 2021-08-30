@@ -1,15 +1,17 @@
 <template>
+   <!-- eslint-disable-next-line vue/no-v-html -->
    <div id="markdown-content" v-html="compiledMarkdown"></div>
 </template>
 
 <script lang="ts">
 import axios from "axios";
 import hljs from "highlight.js";
-import { computed, defineComponent, ref, watch } from "vue";
+import { defineComponent, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import marked from "marked";
 import DOMPurify from "dompurify";
 import useStore from "@/plugin/store";
+import { StoreAppId } from "@/Types/ObjectTypes";
 
 export default defineComponent({
    name: "Content",
@@ -20,13 +22,13 @@ export default defineComponent({
       const route = useRoute();
       const router = useRouter();
 
-      const displayContent = (id: string) => {
-         const app = store.findAppById(id.toString());
+      const displayContent = (id: StoreAppId) => {
+         const app = store.findAppById(id);
 
          if (app === undefined) {
             router.push("/");
-         } else if (store.existReadme(id.toString())) {
-            markdown.value = store.findReadmeById(id.toString())?.content;
+         } else if (store.existReadme(app.id.toString())) {
+            markdown.value = store.findReadmeById(app.id.toString())?.content;
          } else {
             axios
                .get(app.readme)
@@ -41,17 +43,14 @@ export default defineComponent({
          }
       };
 
-      displayContent(route.params.id.toString());
-
-      watch(
-         () => route.params.id,
-         (id, _previousId) => {
-            displayContent(id.toString());
-         }
-      );
+      displayContent({
+         user: route.params.user.toString(),
+         repo: route.params.repo.toString(),
+      });
 
       return {
          markdown,
+         displayContent,
       };
    },
    computed: {
@@ -66,6 +65,14 @@ export default defineComponent({
          });
       },
    },
+   watch: {
+      "$route.params": {
+         handler(to, _from) {
+            this.displayContent(to);
+         },
+         immediate: true,
+      },
+   },
    mounted() {
       hljs.highlightAll();
    },
@@ -77,10 +84,5 @@ export default defineComponent({
 
 #markdown-content {
    padding: 20px;
-
-   & > p > img {
-      width: 100%;
-      height: auto;
-   }
 }
 </style>
