@@ -2,10 +2,10 @@
    <div class="pane pane-md sidebar">
       <ul class="list-group">
          <li class="list-group-header">
-            <input v-model="search" class="form-control" type="text" placeholder="Search for something" @keypress="updateSearch" />
+            <input v-model="search" class="form-control" type="text" placeholder="Search for something" />
          </li>
 
-         <router-link v-for="app in apps" :key="app.id" :to="{ name: 'app_boilerplate', params: { user: app.user, repo: app.repo } }" class="sidebar-link">
+         <router-link v-for="app in compitedList" :key="app.id" :to="{ name: 'app_boilerplate', params: { user: app.user, repo: app.repo } }" class="sidebar-link">
             <li class="list-group-item sidebar-link-content">
                <div class="media-body">
                   <strong>{{ app.title }}</strong>
@@ -32,27 +32,23 @@ export default defineComponent({
       const store = useStore();
       const search = ref("");
 
-      let { apps } = store;
-
-      const updateSearch = () => {
-         if (search.value === "") {
-            apps = store.apps;
-         }
-         apps = apps.filter((app: StoreAppType) => app.title.includes(search.value));
-      };
+      const apps = store.apps;
 
       return {
          apps,
          search,
-         updateSearch,
       };
+   },
+   computed: {
+      compitedList() {
+         return this.apps.filter((app: StoreAppType) => app.title.toLowerCase().indexOf(this.search.toLowerCase()) !== -1);
+      },
    },
 });
 </script>
 
 <style lang="scss" scoped>
 li.list-group-item {
-   // background-color: red;
    padding-left: 15px;
 }
 
